@@ -45,7 +45,7 @@ const CartPage = () => {
                                 <div>
                                     <h3 className='text-lg font-semibold'>{item.name}</h3>
                                     <p className='text-sm text-gray-500 mb-2'>{cart.data?.store.name}</p>
-                                    <p className='text-lg font-bold mb-4'>R$ {(item.price / 100).toFixed(2)}</p>
+                                    <p className='text-lg font-bold mb-4'>$ {item.price}</p>
                                 </div>
                                 <div className='flex items-center justify-between'>
                                     <div className='flex items-center gap-2'>

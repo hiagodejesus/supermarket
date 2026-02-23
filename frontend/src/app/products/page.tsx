@@ -33,7 +33,7 @@ const ProductsPage = () => {
             <div key={product.id} className="p-4 border rounded-lg shadow">
               <h3 className="text-xl font-bold text-gray-900">{product.name}</h3>              
               <div className="flex justify-between items-center mt-4">
-                <p className="text-lg font-semibold">R$ {(product.price / 100).toFixed(2)}</p>
+                <p className="text-lg font-semibold">$ {product.price}</p>
               </div>
               <button 
                 onClick={() => handleCart(product.id)}

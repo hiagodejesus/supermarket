@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Product, Cart } from './types';
+import { Product, Cart, ChatSession, ChatMessage, ChatMessageAction } from './types';
 
 const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000',
@@ -33,3 +33,24 @@ export const removeCartItem = async (cartId: number, productId: number) => {
     await api.delete(`/cart/${cartId}/items/${productId}`);
 }
 
+export const createChatSession = async () => {
+    const response = await api.post('/chat-sessions');
+    return response.data as ChatSession;
+}
+
+export const getChatMessages = async (sessionId: number) => {
+    const response = await api.get(`/chat-sessions/${sessionId}/messages`);
+    return response.data as ChatMessage[];
+}
+
+export const sendChatMessage = async (sessionId: number, message: string) => {
+    const response = await api.post(`/chat-sessions/${sessionId}/messages`, {
+        content: message
+    });
+    return response.data as ChatMessage;
+}
+
+export const executeChatAction = async (actionId: number) => {
+    const response = await api.post(`/chat-actions/${actionId}`);
+    return response.data as ChatMessageAction;
+}
